@@ -266,6 +266,10 @@ public class TimeSheetRemainder  {
 			confirm = true;
 			if(selectedDays.size()==1 && daycheck.equalsIgnoreCase(dayNames[date2.get(Calendar.DAY_OF_WEEK)])){
 				time.schedule(new Customtask(), calendar.getTime(), TimeUnit.DAYS.toMillis(7));
+				break;
+			}else{
+				time.schedule(new Customtask(), calendar.getTime(), TimeUnit.DAYS.toMillis(7));
+				break;
 			}
 			
 //			break;
@@ -287,16 +291,19 @@ public class TimeSheetRemainder  {
 						if(day<1){
 						LocalDate ld = LocalDate.of(date2.get(Calendar.YEAR),date2.get(Calendar.MONTH)+1,date2.get(Calendar.DATE));
 						ld = ld.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
-						calendar.set(ld.getYear(),ld.getMonthValue(),ld.getDayOfMonth());
-						System.out.println(ld.getYear()+","+ld.getMonthValue()+","+ld.getDayOfMonth());	
+						calendar.set(ld.getYear(),ld.getMonthValue()-1,ld.getDayOfMonth());
+						//System.out.println(ld.getYear()+","+ld.getMonthValue()-1+","+ld.getDayOfMonth());	
 						
 						calendar.set(Calendar.HOUR_OF_DAY, hour);
 				        calendar.set(Calendar.MINUTE, min);
 				        calendar.set(Calendar.SECOND, second);
 				        calendar.set(Calendar.MILLISECOND, 0);
+
+				        System.out.println(calendar.getTime());	
+				        
 				        time.schedule(new Customtask(), calendar.getTime(), TimeUnit.DAYS.toMillis(7));
 						
-						TomOrYes = true;
+						System.out.println(calendar.getTime()); TomOrYes = true;	
 //						message("sunday");
 //						break;
 						}
@@ -305,8 +312,8 @@ public class TimeSheetRemainder  {
 						if(day<2){
 							LocalDate ld = LocalDate.of(date2.get(Calendar.YEAR),date2.get(Calendar.MONTH)+1,date2.get(Calendar.DATE));
 							ld = ld.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
-							calendar.set(ld.getYear(),ld.getMonthValue(),ld.getDayOfMonth());
-							System.out.println(ld.getYear()+","+ld.getMonthValue()+","+ld.getDayOfMonth());	
+							calendar.set(ld.getYear(),ld.getMonthValue()-1,ld.getDayOfMonth());
+							//System.out.println(ld.getYear()+","+ld.getMonthValue()-1+","+ld.getDayOfMonth());	
 							
 							calendar.set(Calendar.HOUR_OF_DAY, hour);
 					        calendar.set(Calendar.MINUTE, min);
@@ -314,7 +321,7 @@ public class TimeSheetRemainder  {
 					        calendar.set(Calendar.MILLISECOND, 0);
 					        time.schedule(new Customtask(), calendar.getTime(), TimeUnit.DAYS.toMillis(7));
 							
-							TomOrYes = true;
+							System.out.println(calendar.getTime()); TomOrYes = true;	
 //							message("monday");
 //							break;
 							}
@@ -324,8 +331,8 @@ public class TimeSheetRemainder  {
 						if(day<3){
 						LocalDate ld = LocalDate.of(date2.get(Calendar.YEAR),date2.get(Calendar.MONTH)+1,date2.get(Calendar.DATE));
 						ld = ld.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));
-						calendar.set(ld.getYear(),ld.getMonthValue(),ld.getDayOfMonth());
-						System.out.println(ld.getYear()+","+ld.getMonthValue()+","+ld.getDayOfMonth());	
+						calendar.set(ld.getYear(),ld.getMonthValue()-1,ld.getDayOfMonth());
+						//System.out.println(ld.getYear()+","+ld.getMonthValue()-1+","+ld.getDayOfMonth());	
 
 						calendar.set(Calendar.HOUR_OF_DAY, hour);
 				        calendar.set(Calendar.MINUTE, min);
@@ -333,25 +340,25 @@ public class TimeSheetRemainder  {
 				        calendar.set(Calendar.MILLISECOND, 0);
 				        time.schedule(new Customtask(), calendar.getTime(), TimeUnit.DAYS.toMillis(7));
 				        
-						TomOrYes = true;
+						System.out.println(calendar.getTime()); TomOrYes = true;	
 //						message("tuesday");
 //						break;
 						}
 					}
 					if(DaysForTimeInterval[n].equalsIgnoreCase("wednesday")){
 						if(day<4){
-						LocalDate ld = LocalDate.of(date2.get(Calendar.YEAR),date2.get(Calendar.MONTH)+1,date2.get(Calendar.DATE));
+						LocalDate ld = LocalDate.of(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH)+1,calendar.get(Calendar.DATE));
 						ld = ld.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY));
-						calendar.set(ld.getYear(),ld.getMonthValue(),ld.getDayOfMonth());
-						System.out.println(ld.getYear()+","+ld.getMonthValue()+","+ld.getDayOfMonth());	
+						calendar.set(ld.getYear(),ld.getMonthValue()-1,ld.getDayOfMonth());
+						//System.out.println(ld.getYear()+","+ld.getMonthValue()-1+","+ld.getDayOfMonth());	
 						
 						calendar.set(Calendar.HOUR_OF_DAY, hour);
 				        calendar.set(Calendar.MINUTE, min);
 				        calendar.set(Calendar.SECOND, second);
 				        calendar.set(Calendar.MILLISECOND, 0);
 				        time.schedule(new Customtask(), calendar.getTime(), TimeUnit.DAYS.toMillis(7));
-						
-						TomOrYes = true;
+//				        
+						System.out.println(calendar.getTime()); TomOrYes = true;	
 //						message("wednesday"); 
 //						break;
 						}
@@ -361,8 +368,8 @@ public class TimeSheetRemainder  {
 						if(day<5){
 						LocalDate ld = LocalDate.of(date2.get(Calendar.YEAR),date2.get(Calendar.MONTH)+1,date2.get(Calendar.DATE));
 						ld = ld.with(TemporalAdjusters.next(DayOfWeek.THURSDAY));
-						calendar.set(ld.getYear(),ld.getMonthValue(),ld.getDayOfMonth());
-						System.out.println(ld.getYear()+","+ld.getMonthValue()+","+ld.getDayOfMonth());	
+						calendar.set(ld.getYear(),ld.getMonthValue()-1,ld.getDayOfMonth());
+						//System.out.println(ld.getYear()+","+ld.getMonthValue()-1+","+ld.getDayOfMonth());	
 						
 						calendar.set(Calendar.HOUR_OF_DAY, hour);
 				        calendar.set(Calendar.MINUTE, min);
@@ -370,7 +377,7 @@ public class TimeSheetRemainder  {
 				        calendar.set(Calendar.MILLISECOND, 0);
 				        time.schedule(new Customtask(), calendar.getTime(), TimeUnit.DAYS.toMillis(7));
 						
-						TomOrYes = true;
+						System.out.println(calendar.getTime()); TomOrYes = true;	
 //						message("thursday");
 //						break;
 						}
@@ -379,8 +386,8 @@ public class TimeSheetRemainder  {
 						if(day<6){
 						LocalDate ld = LocalDate.of(date2.get(Calendar.YEAR),date2.get(Calendar.MONTH)+1,date2.get(Calendar.DATE));
 						ld = ld.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));
-						calendar.set(ld.getYear(),ld.getMonthValue(),ld.getDayOfMonth());
-						System.out.println(ld.getYear()+","+ld.getMonthValue()+","+ld.getDayOfMonth());	
+						calendar.set(ld.getYear(),ld.getMonthValue()-1,ld.getDayOfMonth());
+						//System.out.println(ld.getYear()+","+ld.getMonthValue()-1+","+ld.getDayOfMonth());	
 						
 						calendar.set(Calendar.HOUR_OF_DAY, hour);
 				        calendar.set(Calendar.MINUTE, min);
@@ -388,7 +395,7 @@ public class TimeSheetRemainder  {
 				        calendar.set(Calendar.MILLISECOND, 0);
 				        time.schedule(new Customtask(), calendar.getTime(), TimeUnit.DAYS.toMillis(7));
 						
-						TomOrYes = true;
+						System.out.println(calendar.getTime()); TomOrYes = true;	
 //						message("friday");
 //						break;
 						}
@@ -397,8 +404,8 @@ public class TimeSheetRemainder  {
 						if(day<7){
 						LocalDate ld = LocalDate.of(date2.get(Calendar.YEAR),date2.get(Calendar.MONTH)+1,date2.get(Calendar.DATE));
 						ld = ld.with(TemporalAdjusters.next(DayOfWeek.SATURDAY));
-						calendar.set(ld.getYear(),ld.getMonthValue(),ld.getDayOfMonth());
-						System.out.println(ld.getYear()+","+ld.getMonthValue()+","+ld.getDayOfMonth());	
+						calendar.set(ld.getYear(),ld.getMonthValue()-1,ld.getDayOfMonth());
+						//System.out.println(ld.getYear()+","+ld.getMonthValue()-1+","+ld.getDayOfMonth());	
 						
 						calendar.set(Calendar.HOUR_OF_DAY, hour);
 				        calendar.set(Calendar.MINUTE, min);
@@ -406,7 +413,7 @@ public class TimeSheetRemainder  {
 				        calendar.set(Calendar.MILLISECOND, 0);
 				        time.schedule(new Customtask(), calendar.getTime(), TimeUnit.DAYS.toMillis(7));
 						
-						TomOrYes = true;
+						System.out.println(calendar.getTime()); TomOrYes = true;	
 //						message("saturday");
 //						break;
 						}
@@ -424,8 +431,8 @@ public class TimeSheetRemainder  {
 							if(day>1){
 							LocalDate ld = LocalDate.of(date2.get(Calendar.YEAR),date2.get(Calendar.MONTH)+1,date2.get(Calendar.DATE));
 							ld = ld.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
-							calendar.set(ld.getYear(),ld.getMonthValue(),ld.getDayOfMonth());
-							System.out.println(ld.getYear()+","+ld.getMonthValue()+","+ld.getDayOfMonth());	
+							calendar.set(ld.getYear(),ld.getMonthValue()-1,ld.getDayOfMonth());
+							//System.out.println(ld.getYear()+","+ld.getMonthValue()-1+","+ld.getDayOfMonth());	
 							
 							calendar.set(Calendar.HOUR_OF_DAY, hour);
 					        calendar.set(Calendar.MINUTE, min);
@@ -433,7 +440,7 @@ public class TimeSheetRemainder  {
 					        calendar.set(Calendar.MILLISECOND, 0);
 					        time.schedule(new Customtask(), calendar.getTime(), TimeUnit.DAYS.toMillis(7));
 							
-							TomOrYes = true;
+							System.out.println(calendar.getTime()); TomOrYes = true;	
 //							message("sunday");
 //							break;
 							}
@@ -442,8 +449,8 @@ public class TimeSheetRemainder  {
 							if(day>2){
 								LocalDate ld = LocalDate.of(date2.get(Calendar.YEAR),date2.get(Calendar.MONTH)+1,date2.get(Calendar.DATE));
 								ld = ld.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
-								calendar.set(ld.getYear(),ld.getMonthValue(),ld.getDayOfMonth());
-								System.out.println(ld.getYear()+","+ld.getMonthValue()+","+ld.getDayOfMonth());	
+								calendar.set(ld.getYear(),ld.getMonthValue()-1,ld.getDayOfMonth());
+								//System.out.println(ld.getYear()+","+ld.getMonthValue()-1+","+ld.getDayOfMonth());	
 								
 								calendar.set(Calendar.HOUR_OF_DAY, hour);
 						        calendar.set(Calendar.MINUTE, min);
@@ -451,7 +458,7 @@ public class TimeSheetRemainder  {
 						        calendar.set(Calendar.MILLISECOND, 0);
 						        time.schedule(new Customtask(), calendar.getTime(), TimeUnit.DAYS.toMillis(7));
 						        
-								TomOrYes = true;
+								System.out.println(calendar.getTime()); TomOrYes = true;	
 //								message("monday");
 //								break;
 								}
@@ -461,8 +468,8 @@ public class TimeSheetRemainder  {
 							if(day>3){
 							LocalDate ld = LocalDate.of(date2.get(Calendar.YEAR),date2.get(Calendar.MONTH)+1,date2.get(Calendar.DATE));
 							ld = ld.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));
-							calendar.set(ld.getYear(),ld.getMonthValue(),ld.getDayOfMonth());
-							System.out.println(ld.getYear()+","+ld.getMonthValue()+","+ld.getDayOfMonth());	
+							calendar.set(ld.getYear(),ld.getMonthValue()-1,ld.getDayOfMonth());
+							//System.out.println(ld.getYear()+","+ld.getMonthValue()-1+","+ld.getDayOfMonth());	
 							
 							calendar.set(Calendar.HOUR_OF_DAY, hour);
 					        calendar.set(Calendar.MINUTE, min);
@@ -470,7 +477,7 @@ public class TimeSheetRemainder  {
 					        calendar.set(Calendar.MILLISECOND, 0);
 					        time.schedule(new Customtask(), calendar.getTime(), TimeUnit.DAYS.toMillis(7));
 							
-							TomOrYes = true;
+							System.out.println(calendar.getTime()); TomOrYes = true;	
 //							message("tuesday");
 //							break;
 							}
@@ -479,8 +486,8 @@ public class TimeSheetRemainder  {
 							if(day>4){
 							LocalDate ld = LocalDate.of(date2.get(Calendar.YEAR),date2.get(Calendar.MONTH)+1,date2.get(Calendar.DATE));
 							ld = ld.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY));
-							calendar.set(ld.getYear(),ld.getMonthValue(),ld.getDayOfMonth());
-							System.out.println(ld.getYear()+","+ld.getMonthValue()+","+ld.getDayOfMonth());	
+							calendar.set(ld.getYear(),ld.getMonthValue()-1,ld.getDayOfMonth());
+							//System.out.println(ld.getYear()+","+ld.getMonthValue()-1+","+ld.getDayOfMonth());	
 							
 							calendar.set(Calendar.HOUR_OF_DAY, hour);
 					        calendar.set(Calendar.MINUTE, min);
@@ -488,7 +495,7 @@ public class TimeSheetRemainder  {
 					        calendar.set(Calendar.MILLISECOND, 0);
 					        time.schedule(new Customtask(), calendar.getTime(), TimeUnit.DAYS.toMillis(7));
 							
-							TomOrYes = true;
+							System.out.println(calendar.getTime()); TomOrYes = true;	
 //							message("wednesday"); 
 //							break;
 							}
@@ -498,8 +505,8 @@ public class TimeSheetRemainder  {
 							if(day>5){
 							LocalDate ld = LocalDate.of(date2.get(Calendar.YEAR),date2.get(Calendar.MONTH)+1,date2.get(Calendar.DATE));
 							ld = ld.with(TemporalAdjusters.next(DayOfWeek.THURSDAY));
-							calendar.set(ld.getYear(),ld.getMonthValue(),ld.getDayOfMonth());
-							System.out.println(ld.getYear()+","+ld.getMonthValue()+","+ld.getDayOfMonth());	
+							calendar.set(ld.getYear(),ld.getMonthValue()-1,ld.getDayOfMonth());
+							//System.out.println(ld.getYear()+","+ld.getMonthValue()-1+","+ld.getDayOfMonth());	
 							
 							calendar.set(Calendar.HOUR_OF_DAY, hour);
 					        calendar.set(Calendar.MINUTE, min);
@@ -507,7 +514,7 @@ public class TimeSheetRemainder  {
 					        calendar.set(Calendar.MILLISECOND, 0);
 					        time.schedule(new Customtask(), calendar.getTime(), TimeUnit.DAYS.toMillis(7));
 							
-							TomOrYes = true;
+							System.out.println(calendar.getTime()); TomOrYes = true;	
 //							message("thursday");
 //							break;
 							}
@@ -516,8 +523,8 @@ public class TimeSheetRemainder  {
 							if(day>6){
 							LocalDate ld = LocalDate.of(date2.get(Calendar.YEAR),date2.get(Calendar.MONTH)+1,date2.get(Calendar.DATE));
 							ld = ld.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));
-							calendar.set(ld.getYear(),ld.getMonthValue(),ld.getDayOfMonth());
-							System.out.println(ld.getYear()+","+ld.getMonthValue()+","+ld.getDayOfMonth());	
+							calendar.set(ld.getYear(),ld.getMonthValue()-1,ld.getDayOfMonth());
+							//System.out.println(ld.getYear()+","+ld.getMonthValue()-1+","+ld.getDayOfMonth());	
 							
 							calendar.set(Calendar.HOUR_OF_DAY, hour);
 					        calendar.set(Calendar.MINUTE, min);
@@ -525,7 +532,7 @@ public class TimeSheetRemainder  {
 					        calendar.set(Calendar.MILLISECOND, 0);
 					        time.schedule(new Customtask(), calendar.getTime(), TimeUnit.DAYS.toMillis(7));
 							
-							TomOrYes = true;
+							System.out.println(calendar.getTime()); TomOrYes = true;	
 //							message("friday");
 //							break;
 							}
@@ -534,8 +541,8 @@ public class TimeSheetRemainder  {
 							if(day>7){
 							LocalDate ld = LocalDate.of(date2.get(Calendar.YEAR),date2.get(Calendar.MONTH)+1,date2.get(Calendar.DATE));
 							ld = ld.with(TemporalAdjusters.next(DayOfWeek.SATURDAY));
-							calendar.set(ld.getYear(),ld.getMonthValue(),ld.getDayOfMonth());
-							System.out.println(ld.getYear()+","+ld.getMonthValue()+","+ld.getDayOfMonth());	
+							calendar.set(ld.getYear(),ld.getMonthValue()-1,ld.getDayOfMonth());
+							//System.out.println(ld.getYear()+","+ld.getMonthValue()-1+","+ld.getDayOfMonth());	
 							
 							calendar.set(Calendar.HOUR_OF_DAY, hour);
 					        calendar.set(Calendar.MINUTE, min);
@@ -543,7 +550,7 @@ public class TimeSheetRemainder  {
 					        calendar.set(Calendar.MILLISECOND, 0);
 					        time.schedule(new Customtask(), calendar.getTime(), TimeUnit.DAYS.toMillis(7));
 							
-							TomOrYes = true;
+							System.out.println(calendar.getTime()); TomOrYes = true;	
 //							message("saturday");
 //							break;
 							}
@@ -695,10 +702,10 @@ public class TimeSheetRemainder  {
 		 
 		 String user = new com.sun.security.auth.module.NTSystem().getName();
 		 
-		 File srcDir2 = new File(dir+"/Time sheet reminder.jar");
+		 File srcDir2 = new File(dir+"/Reminder.jar");
 		 File destDir2 = new File("C:/Users/"+user+"/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup");
 		 
-		 File iffolder2exists = new File("C:/Users/"+user+"/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/Time sheet reminder.jar");
+		 File iffolder2exists = new File("C:/Users/"+user+"/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/Reminder.jar");
 		
 		 
 		/* TimeSheetRemainder .infoBox(srcDir2 +"\n"
